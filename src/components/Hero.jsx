@@ -1,0 +1,67 @@
+import { IMG } from '../data/images';
+import { Icon } from './ui/Icons';
+import { TextRoll } from './ui/TextRoll';
+
+export function Hero({ t }) {
+  return (
+    <section className="relative min-h-[100dvh] flex flex-col justify-end overflow-hidden pt-28 pb-12 sm:pb-20 bg-[#0A0A0A]" data-chapter="0">
+      
+      {/* Background Graphic & Media — Using clinic (lobby) photo with warm grading & overlay */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <img
+          src={IMG.clinic}
+          alt="Aura Dental Studio Nişantaşı"
+          className="w-full h-full object-cover scale-110 animate-[slowZoom_25s_cubic-bezier(0.16,1,0.3,1)_forwards]"
+          loading="eager"
+          style={{ filter: 'contrast(1.05) brightness(0.48) grayscale(0.2)' }}
+        />
+        {/* Editorial color gradients for readability */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/80"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/55 via-black/10 to-transparent"></div>
+      </div>
+
+      {/* Floating coordinates / Editorial details */}
+      <div className="absolute top-32 right-8 sm:right-12 z-10 hidden md:block text-right select-none pointer-events-none reveal">
+        <div className="text-[10px] tracking-[0.25em] text-[#4a78e0] font-mono uppercase">AURA DENTAL STUDIO</div>
+        <div className="text-[10px] tracking-[0.2em] text-white/40 font-mono mt-1">41.0485° N, 28.9895° E</div>
+      </div>
+
+      {/* Main Content Area */}
+      <div className="relative z-10 max-w-[1440px] mx-auto w-full px-5 sm:px-8 lg:px-12">
+        <div className="flex items-center gap-3 mb-6 sm:mb-8 reveal">
+          <div className="w-10 sm:w-16 h-[1.5px] bg-[#4a78e0]"></div>
+          <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#4a78e0] font-semibold">{t.hero.tag}</span>
+        </div>
+
+        <h1 className="font-extralight leading-[0.92] tracking-[-0.04em] text-white w-full max-w-[95%] md:max-w-[80vw] break-words">
+          <span className="line-wrap"><span className="line-inner block" style={{ fontSize: 'clamp(2.8rem, 8.5vw, 8.5rem)' }}>{t.hero.l1}</span></span>
+          <span className="line-wrap"><span className="line-inner block text-[#4a78e0]" style={{ fontSize: 'clamp(2.8rem, 8.5vw, 8.5rem)' }}><span className="italic font-thin text-[#4a78e0]">{t.hero.l2}</span></span></span>
+          <span className="line-wrap"><span className="line-inner block text-white" style={{ fontSize: 'clamp(2.8rem, 8.5vw, 8.5rem)' }}>{t.hero.l3}</span></span>
+        </h1>
+
+        <div className="mt-10 sm:mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 reveal">
+          <a 
+            href="tel:+902121234567" 
+            className="magnetic group flex items-center gap-4 text-[13px] tracking-[0.05em] uppercase font-medium bg-white text-gray-900 pl-2 pr-6 py-2.5 rounded-full hover:bg-[#4a78e0] hover:text-white hover:scale-[1.03] transition-all duration-500 shadow-xl"
+          >
+            <span className="w-11 h-11 rounded-full bg-[#4a78e0] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#4a78e0] transition-colors duration-500">
+              <Icon.Phone s={14} className="group-hover:rotate-12 transition-transform duration-500" />
+            </span>
+            <TextRoll text={t.hero.cta} />
+          </a>
+          
+          <div className="text-[11px] text-white/70 font-mono tracking-widest uppercase border-l-2 border-[#4a78e0] pl-5 py-1.5 leading-none">
+            {t.hero.meta}
+          </div>
+        </div>
+      </div>
+      
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes slowZoom {
+          from { transform: scale(1.12); }
+          to { transform: scale(1.02); }
+        }
+      `}} />
+    </section>
+  );
+}
