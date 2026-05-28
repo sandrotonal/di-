@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { PageHero } from '../components/PageHero';
 import { TestimonialsColumn } from '../components/ui/testimonials-columns-1';
 import { ShinyButton } from '../components/ui/shiny-button';
@@ -7,6 +7,7 @@ import { ShinyButton } from '../components/ui/shiny-button';
 import { IMG } from '../data/images';
 
 export default function TestimonialsPage({ t }) {
+  const navigate = useNavigate();
   const testimonials = (t.testimonials.items || []).map((item, i) => ({
     text: item.q,
     name: item.name,
@@ -92,7 +93,7 @@ export default function TestimonialsPage({ t }) {
               <p className="text-[13px] text-gray-400 max-w-xs sm:text-right leading-[1.7] font-light">
                 {t.common.freeConsultation || 'İlk görüşme ücretsiz'}
               </p>
-              <ShinyButton onClick={() => window.location.href = "/iletisim"}>
+              <ShinyButton onClick={() => navigate("/iletisim")}>
                 {t.common.appointment || 'Randevu Al'}
               </ShinyButton>
             </div>

@@ -19,6 +19,8 @@ import JournalPage from './pages/Journal';
 import TeamPage from './pages/Team';
 import FAQPage from './pages/FAQ';
 import ContactPage from './pages/Contact';
+import PrivacyPage from './pages/Privacy';
+import KVKKPage from './pages/KVKK';
 
 export default function App() {
   const [lang, setLang] = useState('tr');
@@ -56,6 +58,8 @@ export default function App() {
           <Route path="ekip" element={<TeamPage t={t} lang={lang} />} />
           <Route path="sss" element={<FAQPage t={t} lang={lang} />} />
           <Route path="iletisim" element={<ContactPage t={t} lang={lang} />} />
+          <Route path="gizlilik" element={<PrivacyPage t={t} lang={lang} />} />
+          <Route path="kvkk" element={<KVKKPage t={t} lang={lang} />} />
         </Route>
       </Routes>
     </Router>

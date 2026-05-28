@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from "motion/react";
 import { Hero } from '../components/Hero';
 import { Marquee } from '../components/Marquee';
@@ -9,6 +9,7 @@ import { IMG } from '../data/images';
 import AboutSection2 from '../components/ui/about-section-2';
 
 export default function Home({ t, lang }) {
+  const navigate = useNavigate();
   const isTr = lang === 'tr';
   const isDe = lang === 'de';
 
@@ -222,7 +223,7 @@ export default function Home({ t, lang }) {
             </p>
           </div>
           
-          <ShinyButton onClick={() => window.location.href = "/iletisim"}>
+          <ShinyButton onClick={() => navigate("/iletisim")}>
             {t.hero.cta}
           </ShinyButton>
         </div>
