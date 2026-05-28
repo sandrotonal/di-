@@ -19,6 +19,7 @@ export const T = {
       l1: "Gülüşünüzü",
       l2: "yeniden",
       l3: "tasarlıyoruz.",
+      heroWords: ["yeniden", "dijital", "estetik", "modern", "sanatla", "kişiye özel"],
       cta: "Randevu Al",
       meta: "2025 — TDB Onaylı Klinik"
     },
@@ -90,7 +91,13 @@ export const T = {
       items: [
         { name: "Elif Korkmaz", role: "Dijital Gülüş Tasarımı", q: "Aynaya bakmaktan çekiniyordum. Artık her fotoğrafımda gülümsüyorum. Ekip gerçekten hayatımı değiştirdi." },
         { name: "Can Özdemir", role: "All-on-4 İmplant", q: "10 yıl protez kullandım. Artık gerçek dişlerimle yiyebiliyor, konuşabiliyorum. Harika bir deneyim." },
-        { name: "Aylin Şahin", role: "Invisalign", q: "Kimse fark etmedi, ben her gün sonucu gördüm. Mükemmel bir ekip ve profesyonel yaklaşım." }
+        { name: "Aylin Şahin", role: "Invisalign", q: "Kimse fark etmedi, ben her gün sonucu gördüm. Mükemmel bir ekip ve profesyonel yaklaşım." },
+        { name: "Burak Kaya", role: "Lamine Veneer", q: "Lamine veneer tedavim sonrasında gülüşüm inanılmaz doğal oldu. Herkes dişlerimi övüyor." },
+        { name: "Zeynep Yılmaz", role: "Estetik Dolgu", q: "Kırık ön dişimi estetik dolgu ile düzelttiler, orijinalinden farksız duruyor. Doktorlar gerçekten sanatçı." },
+        { name: "Mehmet Yıldız", role: "Diş Beyazlatma", q: "Tek seansta dişlerim pırıl pırıl oldu, hassasiyet de yaşamadım. Çok konforluydu." },
+        { name: "Derya Çelik", role: "Klinik Deneyimi", q: "Klinik tertemiz, odalar çok ferah ve teknoloji harika. Kendimi otelde gibi hissettim." },
+        { name: "Hakan Demir", role: "Zirkonyum Kaplama", q: "Çiğneme konforum ve estetik kaygılarım zirkonyum kaplamalarla son buldu. Çok profesyoneller." },
+        { name: "Selin Şen", role: "Ekip & Destek", q: "Tüm tedavi boyunca her soruma sabırla cevap verdiler. İletişim ve nezaket en üst düzeydeydi." }
       ]
     },
     tour: {
@@ -201,10 +208,11 @@ export const T = {
       contact: "Contact"
     },
     hero: {
-      tag: "Nişantaşı · Istanbul",
+	  tag: "Nişantaşı · Istanbul",
       l1: "We redesign",
       l2: "your",
       l3: "smile.",
+      heroWords: ["your", "your perfect", "your beautiful", "every", "your digital"],
       cta: "Book Appointment",
       meta: "2025 — TDA Certified Clinic"
     },
@@ -276,7 +284,13 @@ export const T = {
       items: [
         { name: "Elif Korkmaz", role: "Digital Smile Design", q: "I was hesitant to look in the mirror. Now I smile in every single photo. The team truly changed my life." },
         { name: "Can Özdemir", role: "All-on-4 Implants", q: "After 10 years with dentures, I can eat and speak with real teeth. An amazing experience." },
-        { name: "Aylin Şahin", role: "Invisalign", q: "Nobody noticed, but I saw results every day. Excellent team and highly professional approach." }
+        { name: "Aylin Şahin", role: "Invisalign", q: "Nobody noticed, but I saw results every day. Excellent team and highly professional approach." },
+        { name: "Burak Kaya", role: "Laminate Veneers", q: "After my laminate veneer treatment, my smile became incredibly natural. Everyone praises my teeth." },
+        { name: "Zeynep Yilmaz", role: "Aesthetic Fillings", q: "They fixed my chipped front tooth with aesthetic filling, looks no different from the original. The doctors are true artists." },
+        { name: "Mehmet Yildiz", role: "Teeth Whitening", q: "My teeth became sparkling in a single session, and I experienced no sensitivity. Very comfortable." },
+        { name: "Derya Celik", role: "Clinic Experience", q: "The clinic is spotless, the rooms are very spacious, and the technology is great. I felt like I was in a hotel." },
+        { name: "Hakan Demir", role: "Zirconia Crowns", q: "My chewing comfort and aesthetic concerns ended with zirconia crowns. Very professional." },
+        { name: "Selin Sen", role: "Team & Support", q: "They patiently answered all my questions throughout the treatment. Communication and kindness were top-notch." }
       ]
     },
     tour: {
@@ -387,10 +401,11 @@ export const T = {
       contact: "Kontakt"
     },
     hero: {
-      tag: "Nişantaşı · Istanbul",
+	  tag: "Nişantaşı · Istanbul",
       l1: "Wir gestalten",
       l2: "Ihr",
       l3: "Lächeln neu.",
+      heroWords: ["Ihr", "Ihr perfektes", "Ihr schönes", "Ihr digitales", "jedes"],
       cta: "Termin buchen",
       meta: "2025 — ZK-zertifizierte Klinik"
     },
@@ -460,9 +475,15 @@ export const T = {
       tag: "07 · Patientengeschichten",
       title: "Echte Transformationen.",
       items: [
-        { name: "Elif Korkmaz", role: "Digitales Smile Design", q: "Ich hatte Angst, in den Spiegel zu schauen. Jetzt lächle ich auf jedem Foto. Das Team hat mein Leben verändert." },
-        { name: "Can Özdemir", role: "All-on-4 Implantate", q: "Nach 10 Jahren mit Prothesen kann ich wieder normal essen und sprechen." },
-        { name: "Aylin Şahin", role: "Invisalign", q: "Niemand hat es bemerkt, aber ich sah jeden Tag Ergebnisse." }
+        { name: "Elif Korkmaz", role: "Digitales Smile Design", q: "Ich hatte Angst, in den Spiegel zu schauen. Jetzt lächle ich auf jedem Foto. Das team hat mein Leben verändert." },
+        { name: "Can Özdemir", role: "All-on-4 Implantate", q: "Nach 10 Jahren mit Prothesen kann ich wieder normal essen und sprechen. Eine tolle Erfahrung." },
+        { name: "Aylin Şahin", role: "Invisalign", q: "Niemand hat es bemerkt, aber ich sah jeden Tag Ergebnisse. Tolles team und sehr professioneller Ansatz." },
+        { name: "Burak Kaya", role: "Veneers", q: "Nach meiner Veneer-Behandlung wurde mein Lächeln unglaublich natürlich. Jeder lobt meine Zähne." },
+        { name: "Zeynep Yilmaz", role: "Ästhetische Füllungen", q: "Sie haben meinen abgebrochenen Frontzahn mit einer ästhetischen Füllung repariert, sieht genauso aus wie das Original. Die Ärzte sind echte Künstler." },
+        { name: "Mehmet Yildiz", role: "Zahnaufhellung", q: "Meine Zähne wurden in einer einzigen Sitzung strahlend weiß, und ich hatte keine Empfindlichkeit. Sehr komfortabel." },
+        { name: "Derya Celik", role: "Klinikerfahrung", q: "Die Klinik ist makellos, die Zimmer sind sehr geräumig und die Technologie ist großartig. Ich fühlte mich wie in einem Hotel." },
+        { name: "Hakan Demir", role: "Zirkonkronen", q: "Mein Kaukomfort und meine ästhetischen Bedenken endeten mit Zirkonkronen. Sehr professionell." },
+        { name: "Selin Sen", role: "Team & Support", q: "Sie haben geduldig all meine Fragen während der Behandlung beantwortet. Kommunikation und Freundlichkeit waren erstklassig." }
       ]
     },
     tour: {

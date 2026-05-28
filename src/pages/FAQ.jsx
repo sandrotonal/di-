@@ -1,15 +1,17 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { PageHero } from '../components/PageHero';
 import { Icon } from '../components/ui/Icons';
+import { Accordion, AccordionContent, AccordionItem } from '../components/ui/accordion';
+import * as AccordionPrimitive from '@radix-ui/react-accordion';
+import { Plus, Stethoscope, CalendarClock, CreditCard, Globe, ShieldCheck, Ambulance } from 'lucide-react';
+
+const faqIcons = [Stethoscope, CalendarClock, CreditCard, Globe, ShieldCheck, Ambulance];
 
 export default function FAQPage({ t, lang }) {
-  const [open, setOpen] = useState(null);
-
-  const faqSub = lang === 'tr' 
-    ? 'Her şeyi şeffaf anlatırız. Tedaviler, süreçler ve fiyatlandırma hakkında merak ettikleriniz.' 
-    : lang === 'de' 
-      ? 'Wir erklären alles transparent. Fragen zu Behandlungen, Prozessen und Preisen.' 
+  const faqSub = lang === 'tr'
+    ? 'Her şeyi şeffaf anlatırız. Tedaviler, süreçler ve fiyatlandırma hakkında merak ettikleriniz.'
+    : lang === 'de'
+      ? 'Wir erklären alles transparent. Fragen zu Behandlungen, Prozessen und Preisen.'
       : 'We explain everything transparently. Questions about treatments, processes, and pricing.';
 
   return (
@@ -22,7 +24,7 @@ export default function FAQPage({ t, lang }) {
         lang={lang}
       />
 
-      {/* ── FAQ — full width accordion ───────────────── */}
+      {/* ── FAQ — shadcn accordion ───────────────── */}
       <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
@@ -46,32 +48,42 @@ export default function FAQPage({ t, lang }) {
             </div>
 
             {/* Accordion */}
-            <div className="lg:col-span-9">
-              {t.faq.items.map((item, i) => (
-                <div key={i} className="reveal border-t border-gray-100 last:border-b">
-                  <button
-                    onClick={() => setOpen(open === i ? null : i)}
-                    className="w-full flex items-center justify-between py-6 sm:py-7 text-left group"
-                  >
-                    <span className="text-[clamp(0.95rem,1.8vw,1.15rem)] font-light text-gray-800 group-hover:text-[#4a78e0] transition-colors pr-8">
-                      {item.q}
-                    </span>
-                    <span className={`shrink-0 w-8 h-8 rounded-full bg-gray-50 group-hover:bg-[#4a78e0] group-hover:text-white flex items-center justify-center transition-all duration-500 ${open === i ? 'rotate-45' : ''}`}>
-                      <svg width="10" height="10" viewBox="0 0 12 12" fill="none">
-                        <path d="M6 0V12M0 6H12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-                      </svg>
-                    </span>
-                  </button>
-                  <div
-                    className="overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)]"
-                    style={{ maxHeight: open === i ? '300px' : '0' }}
-                  >
-                    <p className="pb-7 text-[13px] sm:text-[14px] text-[#5a6473] leading-[1.85] max-w-2xl pr-10 font-light">
-                      {item.a}
-                    </p>
-                  </div>
-                </div>
-              ))}
+            <div className="lg:col-span-9 max-w-[800px]">
+              <Accordion type="single" collapsible className="w-full">
+                {t.faq.items.map((item, i) => {
+                  const IconComponent = faqIcons[i] || Plus;
+                  return (
+                    <AccordionItem value={String(i)} key={i} className="py-2 border-t border-gray-100 last:border-b">
+                      <AccordionPrimitive.Header className="flex">
+                        <AccordionPrimitive.Trigger className="flex flex-1 items-center justify-between py-2 text-left text-[15px] font-semibold leading-6 transition-all [&>svg>path:last-child]:origin-center [&>svg>path:last-child]:transition-all [&>svg>path:last-child]:duration-200 [&[data-state=open]>svg>path:last-child]:rotate-90 [&[data-state=open]>svg>path:last-child]:opacity-0 [&[data-state=open]>svg]:rotate-180">
+                          <span className="flex items-center gap-3">
+                            <span
+                              className="flex size-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-50"
+                              aria-hidden="true"
+                            >
+                              <IconComponent size={16} strokeWidth={2} className="opacity-60" />
+                            </span>
+                            <span className="flex flex-col space-y-1">
+                              <span className="text-gray-800">{item.q}</span>
+                            </span>
+                          </span>
+                          <Plus
+                            size={16}
+                            strokeWidth={2}
+                            className="shrink-0 opacity-60 transition-transform duration-200"
+                            aria-hidden="true"
+                          />
+                        </AccordionPrimitive.Trigger>
+                      </AccordionPrimitive.Header>
+                      <AccordionContent className="ms-3 pb-2 ps-10 text-gray-500">
+                        <p className="text-[13px] sm:text-[14px] leading-[1.85] max-w-2xl font-light">
+                          {item.a}
+                        </p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  );
+                })}
+              </Accordion>
             </div>
           </div>
         </div>
@@ -89,12 +101,12 @@ export default function FAQPage({ t, lang }) {
             </div>
             <div className="flex flex-wrap gap-4 sm:justify-end">
               <a href="tel:+902121234567"
-                className="magnetic inline-flex items-center gap-3 text-[13px] border border-gray-300 bg-white/50 text-gray-700 px-6 py-3.5 rounded-full hover:border-[#4a78e0] hover:text-[#4a78e0] transition-all duration-300 font-medium"
+                className="magnetic inline-flex items-center gap-3 text-[13px] border border-gray-300 bg-white/50 text-[#5a6473] px-6 py-3.5 rounded-full hover:border-[#4a78e0] hover:text-[#4a78e0] transition-all duration-300 font-medium"
               >
                 <Icon.Phone s={13} /> {t.common.phone}
               </a>
               <a href="mailto:info@auradental.studio"
-                className="magnetic inline-flex items-center gap-3 text-[13px] border border-gray-300 bg-white/50 text-gray-700 px-6 py-3.5 rounded-full hover:border-[#4a78e0] hover:text-[#4a78e0] transition-all duration-300 font-medium"
+                className="magnetic inline-flex items-center gap-3 text-[13px] border border-gray-300 bg-white/50 text-[#5a6473] px-6 py-3.5 rounded-full hover:border-[#4a78e0] hover:text-[#4a78e0] transition-all duration-300 font-medium"
               >
                 <Icon.Mail s={13} /> {t.common.email}
               </a>

@@ -1,6 +1,6 @@
 import { IMG } from '../data/images';
-import { Icon } from './ui/Icons';
-import { TextRoll } from './ui/TextRoll';
+import AnimatedTextCycle from './ui/animated-text-cycle';
+import { ShinyButton } from './ui/shiny-button';
 
 export function Hero({ t }) {
   return (
@@ -35,20 +35,20 @@ export function Hero({ t }) {
 
         <h1 className="font-extralight leading-[0.92] tracking-[-0.04em] text-white w-full max-w-[95%] md:max-w-[80vw] break-words">
           <span className="line-wrap"><span className="line-inner block" style={{ fontSize: 'clamp(2.8rem, 8.5vw, 8.5rem)' }}>{t.hero.l1}</span></span>
-          <span className="line-wrap"><span className="line-inner block text-[#4a78e0]" style={{ fontSize: 'clamp(2.8rem, 8.5vw, 8.5rem)' }}><span className="italic font-thin text-[#4a78e0]">{t.hero.l2}</span></span></span>
+          <span className="line-wrap"><span className="line-inner block text-[#4a78e0]" style={{ fontSize: 'clamp(2.8rem, 8.5vw, 8.5rem)' }}>
+            <AnimatedTextCycle
+              words={t.hero.heroWords || [t.hero.l2]}
+              interval={3500}
+              className="italic font-thin text-[#4a78e0]"
+            />
+          </span></span>
           <span className="line-wrap"><span className="line-inner block text-white" style={{ fontSize: 'clamp(2.8rem, 8.5vw, 8.5rem)' }}>{t.hero.l3}</span></span>
         </h1>
 
         <div className="mt-10 sm:mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 reveal">
-          <a 
-            href="tel:+902121234567" 
-            className="magnetic group flex items-center gap-4 text-[13px] tracking-[0.05em] uppercase font-medium bg-white text-gray-900 pl-2 pr-6 py-2.5 rounded-full hover:bg-[#4a78e0] hover:text-white hover:scale-[1.03] transition-all duration-500 shadow-xl"
-          >
-            <span className="w-11 h-11 rounded-full bg-[#4a78e0] text-white flex items-center justify-center group-hover:bg-white group-hover:text-[#4a78e0] transition-colors duration-500">
-              <Icon.Phone s={14} className="group-hover:rotate-12 transition-transform duration-500" />
-            </span>
-            <TextRoll text={t.hero.cta} />
-          </a>
+          <ShinyButton onClick={() => window.location.href = "tel:+902121234567"}>
+            {t.hero.cta}
+          </ShinyButton>
           
           <div className="text-[11px] text-white/70 font-mono tracking-widest uppercase border-l-2 border-[#4a78e0] pl-5 py-1.5 leading-none">
             {t.hero.meta}

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { PageHero } from '../components/PageHero';
 import { IMG } from '../data/images';
 import { Icon } from '../components/ui/Icons';
+import { HoverSlider, TextStaggerHover, HoverSliderImageWrap, HoverSliderImage } from '../components/ui/animated-slideshow';
 
 const svcImages = [IMG.dental1, IMG.dental2, IMG.dental3, IMG.dental4, IMG.dental5, IMG.dental6, IMG.dental7, IMG.dental8];
 
@@ -16,47 +17,42 @@ export default function Treatments({ t, lang }) {
         lang={lang}
       />
 
-      {/* ── Two-column masonry image + list ─────────── */}
-      <section className="py-16 sm:py-24 bg-white">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 lg:gap-12">
-
-            {/* Left: sticky image */}
-            <div className="hidden lg:block lg:col-span-5">
-              <div className="sticky top-28">
-                <div className="aspect-[3/4] overflow-hidden rounded-sm reveal-img">
-                  <img src={IMG.dental2} alt="Tedaviler" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-1000" loading="lazy" />
-                </div>
-              </div>
-            </div>
-
-            {/* Right: treatment list */}
-            <div className="lg:col-span-7">
-              {t.services.items.map((s, i) => (
-                <div key={i} className="reveal group border-t border-gray-100 py-7 last:border-b">
-                  <div className="flex items-start justify-between gap-6">
-                    <div className="flex-1">
-                      <div className="flex items-baseline gap-4 mb-2">
-                        <span className="text-[10px] text-gray-300 tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-                        <h2 className="text-[clamp(1.1rem,2vw,1.4rem)] font-light text-gray-900 group-hover:text-[#4a78e0] transition-colors duration-400 tracking-[-0.01em]">
-                          {s.t}
-                        </h2>
-                      </div>
-                      <p className="pl-8 text-[13px] text-[#5a6473] leading-[1.75] max-w-sm">{s.d}</p>
-                    </div>
-                    <div className="shrink-0 pt-1">
-                      <span className="text-[10px] tracking-[0.15em] text-[#4a78e0] uppercase font-light">{s.meta}</span>
-                    </div>
-                  </div>
-                  {/* hover line */}
-                  <div className="relative mt-5 h-[1px] bg-gray-100 overflow-hidden">
-                    <div className="absolute inset-0 bg-[#4a78e0] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700" />
-                  </div>
-                </div>
-              ))}
-            </div>
+      {/* ── Hover Slider: All Treatments ──────────────── */}
+      <section className="py-16 sm:py-24 bg-[#f4f6fa] overflow-hidden">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 mb-8">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-8 h-[1px] bg-[#4a78e0]" />
+            <span className="text-[10px] tracking-[0.3em] uppercase text-[#4a78e0] font-medium">{t.services.tag}</span>
           </div>
         </div>
+
+        <HoverSlider className="min-h-[40vh] md:min-h-[55vh] place-content-center px-5 sm:px-8 lg:px-12 text-[#5a6473]">
+          <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row items-center justify-evenly gap-8 md:gap-12 w-full">
+            <div className="flex flex-col space-y-2 md:space-y-3 w-full md:w-auto">
+              {t.services.items.map((s, i) => (
+                <TextStaggerHover
+                  key={s.t}
+                  index={i}
+                  className="text-[clamp(1.2rem,2.5vw,2.2rem)] font-bold uppercase tracking-tighter text-gray-800 hover:text-[#4a78e0] transition-colors"
+                  text={s.t}
+                />
+              ))}
+            </div>
+            <HoverSliderImageWrap className="w-full md:w-[45%] max-w-lg aspect-[4/3] rounded-xl overflow-hidden shadow-2xl">
+              {t.services.items.map((s, i) => (
+                <HoverSliderImage
+                  key={s.t}
+                  index={i}
+                  imageUrl={svcImages[i]}
+                  src={svcImages[i]}
+                  alt={s.t}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
+              ))}
+            </HoverSliderImageWrap>
+          </div>
+        </HoverSlider>
       </section>
 
       {/* ── Image gallery strip ──────────────────────── */}

@@ -20,19 +20,19 @@ export const TestimonialsColumn = (props) => {
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
               {props.testimonials.map(({ text, image, name, role }, i) => (
-                <div className="p-10 rounded-3xl border shadow-lg shadow-primary/10 max-w-xs w-full" key={`${index}-${i}`}>
-                  <div>{text}</div>
-                  <div className="flex items-center gap-2 mt-5">
+                <div className="p-6 border-b border-black/5 bg-white/30 backdrop-blur-sm max-w-xs w-full transition-all duration-300 hover:bg-white/50" key={`${index}-${i}`}>
+                  <div className="text-[13px] font-light leading-[1.7] text-gray-700 italic">"{text}"</div>
+                  <div className="flex items-center gap-3 mt-5">
                     <img
-                      width={40}
-                      height={40}
+                      width={36}
+                      height={36}
                       src={image}
                       alt={name}
-                      className="h-10 w-10 rounded-full object-cover"
+                      className="h-9 w-9 rounded-full object-cover"
                     />
                     <div className="flex flex-col">
-                      <div className="font-medium tracking-tight leading-5">{name}</div>
-                      <div className="leading-5 opacity-60 tracking-tight">{role}</div>
+                      <div className="text-[13px] font-medium text-gray-800 tracking-tight leading-none">{name}</div>
+                      <div className="text-[11px] text-[#4a78e0] mt-1 font-light leading-none">{role}</div>
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { PageHero } from '../components/PageHero';
 import { Icon } from '../components/ui/Icons';
+import { LocationTag } from '../components/ui/location-tag';
 
 const formT = {
   tr: {
@@ -79,10 +80,11 @@ export default function ContactPage({ t, lang }) {
                   <Icon.MapPin s={12} />
                   <span>{t.location.address}</span>
                 </div>
-                <div className="text-[16px] font-light leading-[1.8] text-[#5a6473]">
+                <div className="text-[16px] font-light leading-[1.8] text-[#5a6473] mb-4">
                   {t.location.address1}<br />
                   {t.location.address2}
                 </div>
+                <LocationTag city="İstanbul" country="Türkiye" timezone="GMT+3" />
               </div>
 
               <div className="border-b border-gray-200 pb-8">
