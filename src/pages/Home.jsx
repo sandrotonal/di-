@@ -7,6 +7,7 @@ import { HoverSlider, TextStaggerHover, HoverSliderImageWrap, HoverSliderImage }
 import { ShinyButton } from '../components/ui/shiny-button';
 import { IMG } from '../data/images';
 import AboutSection2 from '../components/ui/about-section-2';
+import { ApproachTimeline } from '../components/ApproachTimeline';
 
 export default function Home({ t, lang }) {
   const navigate = useNavigate();
@@ -49,30 +50,7 @@ export default function Home({ t, lang }) {
       {/* ── Section 1: Intro (The Philosophy) ──────────────── */}
       <AboutSection2 t={t} lang={lang} />
 
-      {/* ── Section 1.5: Creative Philosophy Grid ─────────── */}
-      <section className="py-24 bg-white border-b border-gray-200">
-        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="flex items-center gap-3 mb-16 reveal">
-            <div className="w-8 h-[1px] bg-[#4a78e0]" />
-            <span className="text-[10px] tracking-[0.3em] uppercase text-[#4a78e0] font-medium">{t.philosophy.tag}</span>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 stagger">
-            {t.philosophy.chapters.map((chap, i) => (
-              <div key={i} className="group relative border-l border-gray-200 pl-6 py-4 hover:border-[#4a78e0] transition-colors duration-500">
-                <div className="text-[11px] text-gray-300 group-hover:text-[#4a78e0] transition-colors duration-300 font-light mb-4 uppercase tracking-widest tabular-nums">
-                  {String(i + 1).padStart(2, '0')}
-                </div>
-                <h3 className="text-[17px] font-light text-gray-900 group-hover:text-[#4a78e0] transition-colors mb-3">
-                  {chap.t}
-                </h3>
-                <p className="text-[13px] text-[#5a6473] font-light leading-[1.65] group-hover:text-gray-600 transition-colors">
-                  {chap.d}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ApproachTimeline t={t} lang={lang} />
 
       {/* ── Section 2: Premium Treatments (Hover Slider) ──── */}
       <section className="py-24 sm:py-32 bg-[#f4f6fa] overflow-hidden">

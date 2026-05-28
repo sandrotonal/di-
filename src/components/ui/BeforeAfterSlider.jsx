@@ -4,13 +4,16 @@ export function BeforeAfterSlider({ before, after }) {
   const [pos, setPos] = useState(50);
 
   return (
-    <div className="ba-container rounded-sm aspect-[4/5] relative shadow-xl cursor-ew-resize">
+    <div className="ba-container rounded-xl aspect-[4/5] relative shadow-xl cursor-ew-resize">
+      {/* Background image is BEFORE, visible on the left (unclipped region) */}
       <img src={before} alt="Before" className="absolute inset-0 w-full h-full object-cover" />
+      
+      {/* Foreground image is AFTER, visible on the right (clipped on the left from 0 to pos%) */}
       <img
         src={after}
         alt="After"
         className="absolute inset-0 w-full h-full object-cover"
-        style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+        style={{ clipPath: `inset(0 0 0 ${pos}%)` }}
       />
       <div className="ba-divider" style={{ left: `${pos}%` }}>
         <div className="ba-handle">

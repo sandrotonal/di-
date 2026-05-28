@@ -1,5 +1,6 @@
 import { PageHero } from '../components/PageHero';
 import { IMG } from '../data/images';
+import { LocationMap } from '../components/ui/ExpandMap';
 
 export default function Clinic({ t, lang }) {
   return (
@@ -18,7 +19,7 @@ export default function Clinic({ t, lang }) {
           <img src={IMG.clinic2} alt="Klinik" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[2.5s]" loading="lazy" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
           <div className="absolute top-6 left-6">
-            <span className="inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-sm shadow-sm border border-black/5 font-medium text-gray-800">
+            <span className="inline-flex items-center gap-2 text-[10px] tracking-[0.25em] uppercase bg-white/95 backdrop-blur-sm px-3 py-1.5 rounded-sm shadow-sm border border-black/5 font-medium text-gray-800">
               <span className="w-1.5 h-1.5 rounded-full bg-[#4a78e0] animate-pulse" />
               {t.common.virtualTour}
             </span>
@@ -34,14 +35,22 @@ export default function Clinic({ t, lang }) {
       <section className="py-16 sm:py-24 bg-white">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
-            <div className="lg:col-span-4 lg:pr-12 pb-10 lg:pb-0 reveal">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-6 h-[1px] bg-[#4a78e0]" />
-                <span className="text-[10px] tracking-[0.3em] uppercase text-[#4a78e0] font-medium">{t.common.clinicalExperience}</span>
+            <div className="lg:col-span-4 lg:pr-12 pb-10 lg:pb-0 reveal flex flex-col justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-6 h-[1px] bg-[#4a78e0]" />
+                  <span className="text-[10px] tracking-[0.3em] uppercase text-[#4a78e0] font-medium">{t.common.clinicalExperience}</span>
+                </div>
+                <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-extralight tracking-[-0.02em] leading-[1.15] text-gray-900 mb-8">
+                  {t.common.clinicalComfort}
+                </h2>
               </div>
-              <h2 className="text-[clamp(1.5rem,3vw,2.5rem)] font-extralight tracking-[-0.02em] leading-[1.15] text-gray-900">
-                {t.common.clinicalComfort}
-              </h2>
+              <div className="mt-4 mb-6 lg:mb-0">
+                <LocationMap 
+                  location="Nişantaşı, İstanbul" 
+                  coordinates="41.0485° N, 28.9895° E" 
+                />
+              </div>
             </div>
             <div className="lg:col-span-8">
               {[
