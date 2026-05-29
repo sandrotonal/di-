@@ -2,6 +2,12 @@ import { IMG } from '../data/images';
 import { BeforeAfterSlider } from './ui/BeforeAfterSlider';
 
 export function BeforeAfter({ t }) {
+  const homeImages = [
+    { before: IMG.veneerBefore, after: IMG.veneerAfter },
+    { before: IMG.smileBefore, after: IMG.smileAfter },
+    { before: IMG.orthoBefore, after: IMG.orthoAfter }
+  ];
+
   return (
     <section className="py-24 sm:py-32 lg:py-40" data-chapter="5">
       <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 mb-12 sm:mb-16">
@@ -23,11 +29,14 @@ export function BeforeAfter({ t }) {
 
       <div className="h-scroll overflow-x-auto pl-5 sm:pl-8 lg:pl-12">
         <div className="flex gap-6 sm:gap-8 pr-5 sm:pr-8 lg:pr-12">
-          {[0,1,2].map(i => (
-            <div key={i} className="flex-shrink-0 w-[85vw] sm:w-[55vw] lg:w-[400px]">
-              <BeforeAfterSlider before={IMG.before} after={IMG.after} />
-            </div>
-          ))}
+          {[0,1,2].map(i => {
+            const imgPair = homeImages[i] || { before: IMG.before, after: IMG.after };
+            return (
+              <div key={i} className="flex-shrink-0 w-[85vw] sm:w-[55vw] lg:w-[400px]">
+                <BeforeAfterSlider before={imgPair.before} after={imgPair.after} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

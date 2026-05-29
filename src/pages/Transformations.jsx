@@ -40,8 +40,8 @@ export default function Transformations({ t, lang }) {
         complaint: "Farbunterschiede in den Frontzähnen, leichter Engstand und Diastema (Lücken).",
         procedure: "Mit einer minimal-invasiven Präparation (0.3 mm) zur maximalen Schonung der Zahnsubstanz wurden 10 maßgeschneiderte Veneers passend zu den Gesichtszügen und dem Lippenprofil eingesetzt."
       },
-      before: IMG.dental1,
-      after: IMG.smile1
+      before: IMG.veneerBefore,
+      after: IMG.veneerAfter
     },
     gulus: {
       tr: {
@@ -68,8 +68,8 @@ export default function Transformations({ t, lang }) {
         complaint: "Lächeln-Asymmetrie, abgenutzte Zahnkanten und unregelmäßiger Zahnfleischverlauf.",
         procedure: "Die Gesichtsverhältnisse wurden mithilfe der Digital Smile Design Software analysiert. Nach der Laser-Zahnfleischkorrektur wurde mit CAD/CAM-Hybridversorgungen ein symmetrisches Lächeln erzielt."
       },
-      before: IMG.dental2,
-      after: IMG.smile2
+      before: IMG.smileBefore,
+      after: IMG.smileAfter
     },
     implant: {
       tr: {
@@ -96,8 +96,8 @@ export default function Transformations({ t, lang }) {
         complaint: "Schwerer Knochenabbau, lose Prothesen und vollständige Zahnlosigkeit.",
         procedure: "In einer einzigen chirurgischen Sitzung wurden 4 Straumann-Implantate inseriert und am selben Tag eine provisorische, festsitzende, verschraubte Prothese eingesetzt. Nach 3 Monaten Osseointegration wurde die endgültige Hybridprothese eingesetzt."
       },
-      before: IMG.dental3,
-      after: IMG.dental5
+      before: IMG.implantBefore,
+      after: IMG.implantAfter
     },
     ortodonti: {
       tr: {
@@ -124,8 +124,8 @@ export default function Transformations({ t, lang }) {
         complaint: "Engstand im Ober- und Unterkiefer, überlappende Frontzähne und Bissprobleme.",
         procedure: "Mit dem iTero 3D-Intraoralscanner wurde ein digitales Modell erstellt. Mit metallfreien und vollkommen klaren Invisalign-Alignern wurden die Zähne schrittweise in ihre ideale Position bewegt."
       },
-      before: IMG.dental4,
-      after: IMG.dental7
+      before: IMG.orthoBefore,
+      after: IMG.orthoAfter
     }
   };
 

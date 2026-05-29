@@ -3,6 +3,12 @@ import { BeforeAfterSlider } from '../components/ui/BeforeAfterSlider';
 import { IMG } from '../data/images';
 
 export default function Cases({ t, lang }) {
+  const caseImages = [
+    { before: IMG.smileBefore, after: IMG.smileAfter },
+    { before: IMG.implantBefore, after: IMG.implantAfter },
+    { before: IMG.orthoBefore, after: IMG.orthoAfter }
+  ];
+
   return (
     <>
       <PageHero
@@ -15,16 +21,18 @@ export default function Cases({ t, lang }) {
 
       {/* ── Cases — alternating large layout ─────────── */}
       <section className="bg-white">
-        {t.cases.items.map((c, i) => (
-          <div key={i} className={`py-16 sm:py-20 border-b border-gray-100 ${i === 0 ? 'border-t' : ''}`}>
-            <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-              <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center`}>
-                <div className={`reveal-img ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
-                  <div className="aspect-[4/3] overflow-hidden">
-                    <BeforeAfterSlider before={IMG.before} after={IMG.after} />
+        {t.cases.items.map((c, i) => {
+          const imgPair = caseImages[i] || { before: IMG.before, after: IMG.after };
+          return (
+            <div key={i} className={`py-16 sm:py-20 border-b border-gray-100 ${i === 0 ? 'border-t' : ''}`}>
+              <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
+                <div className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center`}>
+                  <div className={`reveal-img ${i % 2 === 1 ? 'lg:order-2' : ''}`}>
+                    <div className="aspect-[4/3] overflow-hidden">
+                      <BeforeAfterSlider before={imgPair.before} after={imgPair.after} />
+                    </div>
                   </div>
-                </div>
-                <div className={`reveal ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
+                  <div className={`reveal ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
                   <div className="flex items-center gap-3 mb-6">
                     <div className="w-6 h-[1px] bg-[#4a78e0]" />
                     <span className="text-[10px] tracking-[0.3em] uppercase text-[#4a78e0] font-medium">{c.tag}</span>
@@ -36,7 +44,8 @@ export default function Cases({ t, lang }) {
               </div>
             </div>
           </div>
-        ))}
+          );
+        })}
       </section>
 
       {/* ── Patient image strip ───────────────────────── */}

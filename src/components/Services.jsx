@@ -1,6 +1,15 @@
 import { IMG } from '../data/images';
 
-const serviceImages = [IMG.dental1, IMG.dental2, IMG.dental3, IMG.dental4, IMG.dental5, IMG.dental6, IMG.dental7, IMG.dental8];
+const serviceImages = [
+  IMG.treatmentDsd,
+  IMG.treatmentImplant,
+  IMG.treatmentVeneer,
+  IMG.treatmentOrtho,
+  IMG.treatmentWhitening,
+  IMG.treatmentFilling,
+  IMG.treatmentCrown,
+  IMG.treatmentEndo
+];
 
 export function Services({ t }) {
   return (

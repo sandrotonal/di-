@@ -4,7 +4,16 @@ import { IMG } from '../data/images';
 import { Icon } from '../components/ui/Icons';
 import { HoverSlider, TextStaggerHover, HoverSliderImageWrap, HoverSliderImage } from '../components/ui/animated-slideshow';
 
-const svcImages = [IMG.dental1, IMG.dental2, IMG.dental3, IMG.dental4, IMG.dental5, IMG.dental6, IMG.dental7, IMG.dental8];
+const svcImages = [
+  IMG.treatmentDsd,
+  IMG.treatmentImplant,
+  IMG.treatmentVeneer,
+  IMG.treatmentOrtho,
+  IMG.treatmentWhitening,
+  IMG.treatmentFilling,
+  IMG.treatmentCrown,
+  IMG.treatmentEndo
+];
 
 export default function Treatments({ t, lang }) {
   return (

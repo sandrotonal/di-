@@ -37,14 +37,6 @@ export default function MainLayout({ lang, setLang, t, totalChapters, activeChap
 
       <div className="scroll-progress" style={{ transform: `scaleX(${scrollProgress})` }}></div>
 
-      <div className="chapter-indicator">
-        <div className="flex flex-col items-center gap-2">
-          {Array.from({ length: totalChapters }).map((_, i) => (
-            <div key={i} className={`chapter-dot ${activeChapter === i ? 'active' : ''}`}></div>
-          ))}
-        </div>
-      </div>
-
       <Navigation t={t} time={time} scrolled={scrolled} lang={lang} setLang={setLang} />
 
       <main>

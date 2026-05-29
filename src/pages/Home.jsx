@@ -35,11 +35,11 @@ export default function Home({ t, lang }) {
       : 'Book your appointment now for an oral analysis and smile simulation at our Nişantaşı clinic.';
 
   const serviceSlides = [
-    { title: t.services.items[0].t, image: IMG.dental1 },
-    { title: t.services.items[1].t, image: IMG.dental2 },
-    { title: t.services.items[2].t, image: IMG.dental3 },
-    { title: t.services.items[3].t, image: IMG.dental4 },
-    { title: t.services.items[4].t, image: IMG.dental5 },
+    { title: t.services.items[0].t, image: IMG.treatmentDsd },
+    { title: t.services.items[1].t, image: IMG.treatmentImplant },
+    { title: t.services.items[2].t, image: IMG.treatmentVeneer },
+    { title: t.services.items[3].t, image: IMG.treatmentOrtho },
+    { title: t.services.items[4].t, image: IMG.treatmentWhitening },
   ];
 
   return (
