@@ -16,6 +16,7 @@ import Cases from './pages/Cases';
 import TestimonialsPage from './pages/Testimonials';
 import Clinic from './pages/Clinic';
 import JournalPage from './pages/Journal';
+import BlogDetail from './pages/BlogDetail';
 import TeamPage from './pages/Team';
 import FAQPage from './pages/FAQ';
 import ContactPage from './pages/Contact';
@@ -55,6 +56,7 @@ export default function App() {
           <Route path="hastalar" element={<TestimonialsPage t={t} lang={lang} />} />
           <Route path="klinik" element={<Clinic t={t} lang={lang} />} />
           <Route path="journal" element={<JournalPage t={t} lang={lang} />} />
+          <Route path="journal/:slug" element={<BlogDetail t={t} lang={lang} />} />
           <Route path="ekip" element={<TeamPage t={t} lang={lang} />} />
           <Route path="sss" element={<FAQPage t={t} lang={lang} />} />
           <Route path="iletisim" element={<ContactPage t={t} lang={lang} />} />

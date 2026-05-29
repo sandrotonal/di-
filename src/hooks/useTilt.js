@@ -1,7 +1,13 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export function useTilt() {
+  const location = useLocation();
+
   useEffect(() => {
+    // Disable hover tilt on touch devices
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
     const cards = document.querySelectorAll('.tilt-card');
     const handlers = [];
     cards.forEach(card => {
@@ -22,11 +28,16 @@ export function useTilt() {
       h.card.removeEventListener('mousemove', h.onMove);
       h.card.removeEventListener('mouseleave', h.onLeave);
     });
-  }, []);
+  }, [location.pathname]);
 }
 
 export function useMagnetic() {
+  const location = useLocation();
+
   useEffect(() => {
+    // Disable magnetic effect on touch devices
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+
     const items = document.querySelectorAll('.magnetic');
     const handlers = [];
     items.forEach(el => {
@@ -45,5 +56,5 @@ export function useMagnetic() {
       h.el.removeEventListener('mousemove', h.onMove);
       h.el.removeEventListener('mouseleave', h.onLeave);
     });
-  }, []);
+  }, [location.pathname]);
 }

@@ -1,8 +1,24 @@
+import { Link } from 'react-router-dom';
 import { PageHero } from '../components/PageHero';
 import { IMG } from '../data/images';
 import { Icon } from '../components/ui/Icons';
 
-const journalImages = [IMG.journal1, IMG.journal2, IMG.journal3, IMG.dental5, IMG.dental6];
+function slugify(text) {
+  const map = { 'ü': 'u', 'ş': 's', 'ı': 'i', 'ö': 'o', 'ç': 'c', 'ğ': 'g' };
+  return text.toLowerCase().replace(/[üşıöçğ]/g, c => map[c]).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+}
+
+const journalImages = [
+  IMG.treatmentDsd,
+  IMG.treatmentImplant,
+  IMG.treatmentVeneer,
+  IMG.treatmentOrtho,
+  IMG.journal5,
+  IMG.treatmentWhitening,
+  "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=80",
+  IMG.treatmentCrown,
+  IMG.treatmentEndo
+];
 
 export default function JournalPage({ t, lang }) {
   return (
@@ -19,14 +35,14 @@ export default function JournalPage({ t, lang }) {
       <section className="py-16 sm:py-24 bg-white border-b border-gray-100">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="aspect-[4/3] overflow-hidden rounded-sm group cursor-pointer">
+            <Link to={`/journal/${slugify(t.journal.items[0].t)}`} className="aspect-[4/3] overflow-hidden rounded-sm group cursor-pointer">
               <img 
                 src={journalImages[0]} 
                 alt={t.journal.items[0].t} 
                 className="journal-img w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] scale-105 group-hover:scale-100" 
                 loading="lazy" 
               />
-            </div>
+            </Link>
             
             <div className="lg:pl-6">
               <div className="flex items-center gap-3 mb-6">
@@ -42,12 +58,14 @@ export default function JournalPage({ t, lang }) {
               <p className="text-[14px] text-[#5a6473] leading-[1.85] mb-8 max-w-md">
                 {t.journal.items[0].d}
               </p>
-              <button className="group inline-flex items-center gap-4 text-[13px] text-gray-800 hover:text-[#4a78e0] transition-colors font-medium">
+              <Link to={`/journal/${slugify(t.journal.items[0].t)}`}
+                className="group inline-flex items-center gap-4 text-[13px] text-gray-800 hover:text-[#4a78e0] transition-colors font-medium"
+              >
                 <span className="w-10 h-10 rounded-full border border-black/10 flex items-center justify-center group-hover:border-[#4a78e0] group-hover:scale-105 transition-all duration-300 bg-white/50">
                   <Icon.Arrow s={11} className="group-hover:translate-x-0.5 transition-transform group-hover:text-[#4a78e0]" />
                 </span>
                 {t.common.readMore}
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -58,7 +76,7 @@ export default function JournalPage({ t, lang }) {
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 stagger">
             {t.journal.items.slice(1).map((article, i) => (
-              <div key={i} className="group cursor-pointer journal-card">
+              <Link key={i} to={`/journal/${slugify(article.t)}`} className="group cursor-pointer journal-card">
                 <div className="mb-6">
                   <div className="aspect-[16/10] overflow-hidden rounded-sm">
                     <img
@@ -83,7 +101,7 @@ export default function JournalPage({ t, lang }) {
                 <div className="mt-4 h-[1px] bg-gray-100 relative overflow-hidden">
                   <div className="absolute inset-0 bg-[#4a78e0] scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-700" />
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

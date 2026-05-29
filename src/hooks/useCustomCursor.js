@@ -7,6 +7,17 @@ export function useCustomCursor() {
     const t1 = document.getElementById('trail1');
     const t2 = document.getElementById('trail2');
     const t3 = document.getElementById('trail3');
+
+    // Disable custom cursor on touch/mobile devices
+    if (window.matchMedia('(pointer: coarse)').matches) {
+      if (dot) dot.style.display = 'none';
+      if (ring) ring.style.display = 'none';
+      if (t1) t1.style.display = 'none';
+      if (t2) t2.style.display = 'none';
+      if (t3) t3.style.display = 'none';
+      return;
+    }
+
     if (!dot || !ring) return;
 
     let dx = 0, dy = 0, tx = 0, ty = 0;
