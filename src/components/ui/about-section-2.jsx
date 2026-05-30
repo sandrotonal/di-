@@ -1,9 +1,11 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { TimelineContent } from "./timeline-animation";
 import { Sparkles } from "lucide-react";
 
 export default function AboutSection2({ t, lang }) {
   const heroRef = useRef(null);
+  const navigate = useNavigate();
 
   const revealVariants = {
     visible: (i) => ({
@@ -92,8 +94,11 @@ export default function AboutSection2({ t, lang }) {
               </TimelineContent>
 
               <TimelineContent
-                as="a"
-                href="/yaklasim"
+                as="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate("/yaklasim");
+                }}
                 animationNum={5}
                 timelineRef={heroRef}
                 customVariants={textVariants}
