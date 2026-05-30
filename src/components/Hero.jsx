@@ -27,11 +27,7 @@ export function Hero({ t }) {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 max-w-[1440px] mx-auto w-full px-5 sm:px-8 lg:px-12">
-        <div className="flex items-center gap-3 mb-6 sm:mb-8 reveal">
-          <div className="w-10 sm:w-16 h-[1.5px] bg-[#4a78e0]"></div>
-          <span className="text-[10px] sm:text-[11px] tracking-[0.25em] uppercase text-[#4a78e0] font-semibold">{t.hero.tag}</span>
-        </div>
+        <div className="relative z-10 max-w-[1440px] mx-auto w-full px-5 sm:px-8 lg:px-12">
 
         <h1 className="font-extralight leading-[0.92] tracking-[-0.04em] text-white w-full max-w-[95%] md:max-w-[80vw] break-words">
           <span className="line-wrap"><span className="line-inner block" style={{ fontSize: 'clamp(2.8rem, 8.5vw, 8.5rem)' }}>{t.hero.l1}</span></span>

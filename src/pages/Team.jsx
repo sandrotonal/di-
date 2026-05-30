@@ -1,7 +1,6 @@
 import { PageHero } from '../components/PageHero';
 import { IMG } from '../data/images';
-
-const docImages = [IMG.doc1, IMG.doc2, IMG.doc3, IMG.doc4];
+import TeamShowcase from '../components/ui/team-showcase';
 
 export default function TeamPage({ t, lang }) {
   const subtitle = lang === 'tr' 
@@ -9,6 +8,20 @@ export default function TeamPage({ t, lang }) {
     : lang === 'de' 
       ? 'Lernen Sie unser hochqualifiziertes und menschliches Zahnärzteteam kennen.'
       : 'Meet our team of highly skilled, human-centric dental experts.';
+
+  const mappedMembers = t.team.members.map((doc, i) => ({
+    id: String(i + 1),
+    name: doc.n,
+    role: doc.r,
+    bio: doc.bio,
+    image: [IMG.doc1, IMG.doc2, IMG.doc3, IMG.doc4][i],
+    social: [
+      { linkedin: 'https://linkedin.com', twitter: 'https://twitter.com' },
+      { linkedin: 'https://linkedin.com', instagram: 'https://instagram.com' },
+      { linkedin: 'https://linkedin.com', instagram: 'https://instagram.com' },
+      { linkedin: 'https://linkedin.com', instagram: 'https://instagram.com' }
+    ][i]
+  }));
   return (
     <>
       <PageHero
@@ -19,33 +32,10 @@ export default function TeamPage({ t, lang }) {
         lang={lang}
       />
 
-      {/* ── Doctors — 2-col large portraits ──────────── */}
+      {/* ── Doctors — interactive showcase masonry ──────────── */}
       <section className="py-14 sm:py-20 bg-white">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-16 sm:gap-y-24">
-            {t.team.members.map((doc, i) => (
-              <div key={i} className="reveal group">
-                <div className="mb-6">
-                  <div className="aspect-[3/4] overflow-hidden rounded-sm">
-                    <img
-                      src={docImages[i]}
-                      alt={doc.n}
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] scale-105 group-hover:scale-100"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-                <div className="border-t border-gray-100 pt-5">
-                  <div className="flex items-baseline justify-between">
-                    <h2 className="text-[clamp(1.1rem,2vw,1.4rem)] font-light text-gray-900 tracking-[-0.01em]">{doc.n}</h2>
-                    <span className="text-[10px] text-gray-300 tabular-nums">{String(i + 1).padStart(2, '0')}</span>
-                  </div>
-                  <p className="text-[12px] text-[#4a78e0] font-medium mt-1 tracking-[0.05em] uppercase">{doc.r}</p>
-                  <p className="text-[13px] text-[#5a6473] mt-3 leading-[1.7]">{doc.bio}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <TeamShowcase members={mappedMembers} />
         </div>
       </section>
 

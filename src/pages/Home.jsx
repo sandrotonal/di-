@@ -8,6 +8,7 @@ import { ShinyButton } from '../components/ui/shiny-button';
 import { IMG } from '../data/images';
 import AboutSection2 from '../components/ui/about-section-2';
 import { ApproachTimeline } from '../components/ApproachTimeline';
+import TeamShowcase from '../components/ui/team-showcase';
 
 export default function Home({ t, lang }) {
   const navigate = useNavigate();
@@ -41,6 +42,20 @@ export default function Home({ t, lang }) {
     { title: t.services.items[3].t, image: IMG.treatmentOrtho },
     { title: t.services.items[4].t, image: IMG.treatmentWhitening },
   ];
+
+  const mappedMembers = t.team.members.map((doc, i) => ({
+    id: String(i + 1),
+    name: doc.n,
+    role: doc.r,
+    bio: doc.bio,
+    image: [IMG.doc1, IMG.doc2, IMG.doc3, IMG.doc4][i],
+    social: [
+      { linkedin: 'https://linkedin.com', twitter: 'https://twitter.com' },
+      { linkedin: 'https://linkedin.com', instagram: 'https://instagram.com' },
+      { linkedin: 'https://linkedin.com', instagram: 'https://instagram.com' },
+      { linkedin: 'https://linkedin.com', instagram: 'https://instagram.com' }
+    ][i]
+  }));
 
   return (
     <>
@@ -109,73 +124,33 @@ export default function Home({ t, lang }) {
       {/* ── Section 3: Clinic Experience & Team ────────────── */}
       <section className="bg-[#f4f6fa] py-24 sm:py-32 border-y border-gray-200">
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start">
+          
+          {/* Header */}
+          <div className="reveal mb-12">
+            <div className="flex items-center gap-3 mb-6">
+              <div className="w-8 h-[1px] bg-gray-400" />
+              <span className="text-[10px] tracking-[0.3em] uppercase text-gray-550 font-medium">{t.team.tag.split(' · ')[1] || (lang === 'tr' ? 'EKİP' : 'TEAM')}</span>
+            </div>
             
-            {/* Left Column - Team */}
-            <div className="lg:col-span-5 reveal">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-8 h-[1px] bg-gray-400" />
-                <span className="text-[10px] tracking-[0.3em] uppercase text-gray-550 font-medium">{t.team.tag.split(' · ')[1] || (lang === 'tr' ? 'EKİP' : 'TEAM')}</span>
-              </div>
-              
-              <h2 className="text-[clamp(2rem,3.5vw,3rem)] font-extralight tracking-[-0.03em] mb-10 text-gray-900">
-                <span className="line-wrap"><span className="line-inner block">{teamTitle1}</span></span>
-                <span className="line-wrap"><span className="line-inner block italic font-thin text-[#4a78e0]">{teamTitle2}</span></span>
-              </h2>
-
-              <div className="space-y-0 border-t border-gray-200">
-                {t.team.members.map((doc, i) => (
-                  <div key={i} className="flex items-center justify-between py-6 border-b border-gray-200 group cursor-pointer transition-colors duration-300 hover:bg-white/40 px-2 rounded-sm">
-                    <div className="flex items-center gap-5">
-                      <div className="w-11 h-11 rounded-full overflow-hidden shrink-0 border border-black/5">
-                        <img
-                          src={[IMG.doc1, IMG.doc2, IMG.doc3, IMG.doc4][i]}
-                          alt={doc.n}
-                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100"
-                          loading="lazy"
-                        />
-                      </div>
-                      <div>
-                        <div className="text-[14px] sm:text-[15px] font-medium text-gray-800 group-hover:text-[#4a78e0] transition-colors">{doc.n}</div>
-                        <div className="text-[11px] text-[#4a78e0]/80 mt-0.5 font-light">{doc.r}</div>
-                      </div>
-                    </div>
-                    <span className="text-[11px] text-[#5a6473]/70 group-hover:text-[#5a6473] transition-colors pl-4 max-w-[200px] text-right font-light line-clamp-1">
-                      {doc.bio}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              
-              <div className="mt-10">
-                <Link to="/ekip"
-                  className="group inline-flex items-center gap-4 text-[13px] uppercase tracking-[0.05em] text-gray-800 hover:text-[#4a78e0] transition-colors font-medium"
-                >
-                  <span className="w-9 h-9 rounded-full border border-black/10 bg-white/40 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                    <Icon.Arrow s={11} className="group-hover:translate-x-0.5 transition-transform" />
-                  </span>
-                  {teamBtn}
-                </Link>
-              </div>
-            </div>
-
-            {/* Right Column - Large Clinic Image - Flat & clean */}
-            <div className="lg:col-span-7 reveal-img lg:pt-8">
-              <div className="aspect-[16/11] overflow-hidden rounded-sm relative group cursor-pointer">
-                <img 
-                  src={IMG.clinic4} 
-                  alt="Aura Dental Studio Klinik" 
-                  className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105 filter grayscale contrast-[1.03] group-hover:grayscale-0" 
-                  loading="lazy" 
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-50 group-hover:opacity-20 transition-opacity duration-700" />
-                <div className="absolute bottom-6 left-6 text-white text-[12px] tracking-[0.2em] uppercase opacity-85 font-light">
-                  {teamImgTag}
-                </div>
-              </div>
-            </div>
-
+            <h2 className="text-[clamp(2.2rem,4.5vw,3.8rem)] font-extralight tracking-[-0.03em] text-gray-900 leading-[1.1]">
+              {teamTitle1} <br />
+              <span className="italic font-thin text-[#4a78e0]">{teamTitle2}</span>
+            </h2>
           </div>
+
+          <TeamShowcase members={mappedMembers} />
+
+          <div className="mt-12 text-center reveal">
+            <Link to="/ekip"
+              className="group inline-flex items-center gap-4 text-[13px] uppercase tracking-[0.05em] text-gray-800 hover:text-[#4a78e0] transition-colors font-medium"
+            >
+              <span className="w-9 h-9 rounded-full border border-black/10 bg-white/40 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                <Icon.Arrow s={11} className="group-hover:translate-x-0.5 transition-transform" />
+              </span>
+              {teamBtn}
+            </Link>
+          </div>
+
         </div>
       </section>
 
