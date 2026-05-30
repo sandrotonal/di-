@@ -1,8 +1,11 @@
 import { IMG } from '../data/images';
 import AnimatedTextCycle from './ui/animated-text-cycle';
+import { useNavigate } from 'react-router-dom';
 import { ShinyButton } from './ui/shiny-button';
+import { AnimatedTextCycle } from './AnimatedTextCycle';
 
 export function Hero({ t }) {
+  const navigate = useNavigate();
   return (
     <section className="relative min-h-[100dvh] flex flex-col justify-end overflow-hidden pt-28 pb-12 sm:pb-20 bg-[#0A0A0A]" data-chapter="0">
       
@@ -42,7 +45,7 @@ export function Hero({ t }) {
         </h1>
 
         <div className="mt-10 sm:mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-6 sm:gap-12 reveal">
-          <ShinyButton onClick={() => window.location.href = "tel:+902121234567"}>
+          <ShinyButton onClick={() => navigate("/iletisim")}>
             {t.hero.cta}
           </ShinyButton>
           
