@@ -9,6 +9,8 @@ import { IMG } from '../data/images';
 import AboutSection2 from '../components/ui/about-section-2';
 import { ApproachTimeline } from '../components/ApproachTimeline';
 import TeamShowcase from '../components/ui/team-showcase';
+import { TestimonialsColumn } from '../components/ui/testimonials-columns-1';
+
 
 export default function Home({ t, lang }) {
   const navigate = useNavigate();
@@ -57,7 +59,29 @@ export default function Home({ t, lang }) {
     ][i]
   }));
 
+  const testimonials = (t.testimonials.items || []).map((item, i) => ({
+    text: item.q,
+    name: item.name,
+    role: item.role,
+    image: [
+      IMG.patient1,
+      IMG.patient2,
+      IMG.patient3,
+      IMG.patient4,
+      IMG.patient5,
+      IMG.patient6,
+      IMG.patient7,
+      IMG.patient8,
+      IMG.patient9
+    ][i % 9]
+  }));
+
+  const firstColumn = testimonials.slice(0, 3);
+  const secondColumn = testimonials.slice(3, 6);
+  const thirdColumn = testimonials.slice(6, 9);
+
   return (
+
     <>
       <Hero t={t} />
       <Marquee items={t.marquee} />
@@ -151,6 +175,49 @@ export default function Home({ t, lang }) {
             </Link>
           </div>
 
+        </div>
+      </section>
+
+      {/* ── Testimonials Sliding Columns Section ─────────────────── */}
+      <section className="py-24 sm:py-32 bg-white overflow-hidden relative border-b border-gray-200">
+        <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12 mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: true }}
+            className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
+          >
+            <div className="flex justify-center">
+              <div className="border border-gray-300 py-1.5 px-5 rounded-lg text-[10px] tracking-[0.2em] uppercase text-gray-500 bg-white/50">
+                {t.testimonials.tag.split(' · ')[1] || (lang === 'tr' ? 'YORUMLAR' : 'REVIEWS')}
+              </div>
+            </div>
+            <h2 className="text-[clamp(2.2rem,4.5vw,3.8rem)] font-extralight tracking-[-0.03em] text-gray-900 leading-[1.1] mt-6 text-center">
+              {lang === 'tr' ? 'Hasta' : lang === 'de' ? 'Patienten' : 'Patient'} <br />
+              <span className="italic font-thin text-[#4a78e0]">{lang === 'tr' ? 'deneyimleri.' : lang === 'de' ? 'bewertungen.' : 'experiences.'}</span>
+            </h2>
+            <p className="text-center mt-6 text-gray-500 text-[14px] leading-[1.8] max-w-sm font-light">
+              {t.testimonials.sub}
+            </p>
+          </motion.div>
+        </div>
+
+        <div className="flex justify-center gap-6 [mask-image:linear-gradient(to_bottom,transparent,black_25%,black_75%,transparent)] max-h-[640px] overflow-hidden px-5 sm:px-8 lg:px-12">
+          <TestimonialsColumn testimonials={firstColumn} duration={15} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={19} />
+          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={17} />
+        </div>
+        
+        <div className="mt-16 text-center reveal">
+          <Link to="/hastalar"
+            className="group inline-flex items-center gap-4 text-[13px] uppercase tracking-[0.05em] text-gray-800 hover:text-[#4a78e0] transition-colors font-medium"
+          >
+            <span className="w-9 h-9 rounded-full border border-black/10 bg-white/40 flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+              <Icon.Arrow s={11} className="group-hover:translate-x-0.5 transition-transform" />
+            </span>
+            {lang === 'tr' ? 'Tüm yorumlar' : lang === 'de' ? 'Alle Bewertungen' : 'All reviews'}
+          </Link>
         </div>
       </section>
 

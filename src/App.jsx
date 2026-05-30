@@ -56,7 +56,7 @@ export default function App() {
           <Route path="hastalar" element={<TestimonialsPage t={t} lang={lang} />} />
           <Route path="klinik" element={<Clinic t={t} lang={lang} />} />
           <Route path="journal" element={<JournalPage t={t} lang={lang} />} />
-          <Route path="journal/:slug" element={<BlogDetail t={t} lang={lang} />} />
+          <Route path="journal/:slug" element={<BlogDetail t={t} lang={lang} setLang={setLang} />} />
           <Route path="ekip" element={<TeamPage t={t} lang={lang} />} />
           <Route path="sss" element={<FAQPage t={t} lang={lang} />} />
           <Route path="iletisim" element={<ContactPage t={t} lang={lang} />} />

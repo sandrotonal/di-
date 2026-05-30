@@ -16,12 +16,12 @@ export default function TestimonialsPage({ t, lang }) {
       IMG.patient1,
       IMG.patient2,
       IMG.patient3,
-      IMG.smile1,
-      IMG.smile2,
-      IMG.dental1,
-      IMG.dental4,
-      IMG.dental6,
-      IMG.dental7
+      IMG.patient4,
+      IMG.patient5,
+      IMG.patient6,
+      IMG.patient7,
+      IMG.patient8,
+      IMG.patient9
     ][i % 9]
   }));
 

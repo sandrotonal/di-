@@ -2,7 +2,6 @@ import { IMG } from '../data/images';
 import AnimatedTextCycle from './ui/animated-text-cycle';
 import { useNavigate } from 'react-router-dom';
 import { ShinyButton } from './ui/shiny-button';
-import { AnimatedTextCycle } from './AnimatedTextCycle';
 
 export function Hero({ t }) {
   const navigate = useNavigate();

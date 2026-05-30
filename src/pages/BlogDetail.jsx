@@ -17,7 +17,7 @@ const journalImages = [
   IMG.treatmentEndo
 ];
 
-export default function BlogDetail({ t, lang }) {
+export default function BlogDetail({ t, lang, setLang }) {
   const { slug } = useParams();
   const navigate = useNavigate();
 
@@ -32,6 +32,21 @@ export default function BlogDetail({ t, lang }) {
       break;
     }
   }
+
+  // Detect language of the slug and update global state if necessary
+  useEffect(() => {
+    let matchedLang = null;
+    for (const l of langKeys) {
+      const items = T[l]?.journal?.items || [];
+      if (items.some(a => slugify(a.t) === slug)) {
+        matchedLang = l;
+        break;
+      }
+    }
+    if (matchedLang && matchedLang !== lang && setLang) {
+      setLang(matchedLang);
+    }
+  }, [slug, lang, setLang, langKeys]);
 
   const articles = t.journal.items;
   const article = foundIndex !== -1 ? articles[foundIndex] : null;
@@ -90,9 +105,9 @@ export default function BlogDetail({ t, lang }) {
             <span className="text-gray-400 font-light">{article.read}</span>
           </div>
 
-          <h1 className="text-[clamp(1.8rem,4vw,3.2rem)] font-extralight tracking-[-0.02em] leading-[1.15] mb-8 text-gray-900">
+          <h2 className="text-[clamp(1.8rem,4vw,3.2rem)] font-extralight tracking-[-0.02em] leading-[1.15] mb-8 text-gray-900">
             {article.t}
-          </h1>
+          </h2>
 
           <div className="prose prose-gray max-w-none">
             {paragraphs.map((p, i) => (

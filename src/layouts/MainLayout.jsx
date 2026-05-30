@@ -11,6 +11,32 @@ import { useSkewScroll } from '../hooks/useSkewScroll';
 import { useChapterIndicator } from '../hooks/useChapterIndicator';
 import { useTime } from '../hooks/useTime';
 import { slugify } from '../lib/utils';
+import { T } from '../data/translations';
+
+const journalImages = [
+  "/images/treatment_dsd.jpg",
+  "/images/treatment_implant.jpg",
+  "/images/treatment_veneer.jpg",
+  "/images/treatment_ortho.jpg",
+  "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&w=1200&q=80",
+  "/images/treatment_whitening.jpg",
+  "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&w=1200&q=80",
+  "/images/treatment_crown.jpg",
+  "/images/treatment_endo.jpg"
+];
+
+const journalPublishDates = [
+  "2026-05-22",
+  "2026-05-14",
+  "2026-05-02",
+  "2026-04-28",
+  "2026-04-12",
+  "2026-04-05",
+  "2026-03-28",
+  "2026-03-18",
+  "2026-03-10"
+];
+
 
 const seoConfig = {
   tr: {
@@ -184,16 +210,29 @@ export default function MainLayout({ lang, setLang, t, totalChapters, activeChap
     const currentPath = path.pathname;
     let title = '';
     let desc = '';
+    let foundIndex = -1;
+    let article = null;
 
     // Check if it is a blog detail page
     if (currentPath.startsWith('/journal/')) {
       const slug = currentPath.split('/')[2];
-      const items = t.journal?.items || [];
+      const langKeys = ['tr', 'en', 'de'];
       
-      const article = items.find(a => slugify(a.t) === slug);
-      if (article) {
-        title = `${article.t} | Aura Dental Studio`;
-        desc = article.d;
+      for (const l of langKeys) {
+        const items = T[l]?.journal?.items || [];
+        const idx = items.findIndex(a => slugify(a.t) === slug);
+        if (idx !== -1) {
+          foundIndex = idx;
+          break;
+        }
+      }
+      
+      if (foundIndex !== -1) {
+        article = t.journal?.items?.[foundIndex];
+        if (article) {
+          title = `${article.t} | Aura Dental Studio`;
+          desc = article.d;
+        }
       }
     }
 
@@ -242,6 +281,192 @@ export default function MainLayout({ lang, setLang, t, totalChapters, activeChap
     }
     ogDesc.setAttribute('content', desc);
 
+    // Update Open Graph URL
+    let ogUrl = document.querySelector('meta[property="og:url"]');
+    if (!ogUrl) {
+      ogUrl = document.createElement('meta');
+      ogUrl.setAttribute('property', 'og:url');
+      document.head.appendChild(ogUrl);
+    }
+    ogUrl.setAttribute('content', `https://auradental.studio${currentPath}`);
+
+    // Update Open Graph Type
+    let ogType = document.querySelector('meta[property="og:type"]');
+    if (!ogType) {
+      ogType = document.createElement('meta');
+      ogType.setAttribute('property', 'og:type');
+      document.head.appendChild(ogType);
+    }
+    ogType.setAttribute('content', currentPath.startsWith('/journal/') ? 'article' : 'website');
+
+    // Update Open Graph Image
+    let ogImage = document.querySelector('meta[property="og:image"]');
+    if (!ogImage) {
+      ogImage = document.createElement('meta');
+      ogImage.setAttribute('property', 'og:image');
+      document.head.appendChild(ogImage);
+    }
+    const currentOgImage = currentPath.startsWith('/journal/') && foundIndex !== -1
+      ? (journalImages[foundIndex] && journalImages[foundIndex].startsWith('http') 
+          ? journalImages[foundIndex] 
+          : `https://auradental.studio${journalImages[foundIndex] || '/images/treatment_dsd.jpg'}`)
+      : 'https://auradental.studio/images/contact_illustration.jpg';
+    ogImage.setAttribute('content', currentOgImage);
+
+    // Update Twitter Card Type
+    let twitterCard = document.querySelector('meta[name="twitter:card"]');
+    if (!twitterCard) {
+      twitterCard = document.createElement('meta');
+      twitterCard.setAttribute('name', 'twitter:card');
+      document.head.appendChild(twitterCard);
+    }
+    twitterCard.setAttribute('content', 'summary_large_image');
+
+    // Update Twitter Card Image
+    let twitterImage = document.querySelector('meta[name="twitter:image"]');
+    if (!twitterImage) {
+      twitterImage = document.createElement('meta');
+      twitterImage.setAttribute('name', 'twitter:image');
+      document.head.appendChild(twitterImage);
+    }
+    twitterImage.setAttribute('content', currentOgImage);
+
+    // --- Dynamic JSON-LD Structured Data Schema ---
+    let schemaData = null;
+
+    if (currentPath === '/') {
+      schemaData = {
+        "@context": "https://schema.org",
+        "@type": "Dentist",
+        "name": "Aura Dental Studio",
+        "image": "https://auradental.studio/images/contact_illustration.jpg",
+        "@id": "https://auradental.studio",
+        "url": "https://auradental.studio",
+        "telephone": "+902121234567",
+        "priceRange": "$$",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Abdi İpekçi Cad. No:42 K:3",
+          "addressLocality": "Şişli",
+          "addressRegion": "İstanbul",
+          "postalCode": "34367",
+          "addressCountry": "TR"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 41.0485,
+          "longitude": 28.9895
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "09:00",
+            "closes": "19:00"
+          },
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": "Saturday",
+            "opens": "10:00",
+            "closes": "16:00"
+          }
+        ],
+        "sameAs": [
+          "https://instagram.com/auradental",
+          "https://facebook.com/auradental",
+          "https://linkedin.com/company/auradental"
+        ]
+      };
+    } else if (currentPath === '/sss') {
+      schemaData = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": (t.faq?.items || []).map(item => ({
+          "@type": "Question",
+          "name": item.q,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": item.a
+          }
+        }))
+      };
+    } else if (currentPath.startsWith('/journal/') && foundIndex !== -1 && article) {
+      schemaData = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": `https://auradental.studio${currentPath}`
+        },
+        "headline": article.t,
+        "description": article.d,
+        "image": currentOgImage,
+        "datePublished": journalPublishDates[foundIndex] || "2026-05-30",
+        "author": {
+          "@type": "Organization",
+          "name": "Aura Dental Studio"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Aura Dental Studio",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://auradental.studio/images/contact_illustration.jpg"
+          }
+        }
+      };
+    } else {
+      let pageLabel = '';
+      if (currentPath === '/tedaviler') pageLabel = t.nav.treatments;
+      else if (currentPath === '/yaklasim') pageLabel = t.nav.approach;
+      else if (currentPath === '/teknoloji') pageLabel = t.nav.technology;
+      else if (currentPath === '/surec') pageLabel = t.nav.process;
+      else if (currentPath === '/donusumler') pageLabel = t.nav.transformations;
+      else if (currentPath === '/vakalar') pageLabel = t.nav.cases;
+      else if (currentPath === '/hastalar') pageLabel = t.testimonials?.breadcrumb || 'Testimonials';
+      else if (currentPath === '/klinik') pageLabel = t.nav.clinic;
+      else if (currentPath === '/journal') pageLabel = t.nav.journal;
+      else if (currentPath === '/ekip') pageLabel = t.nav.doctors;
+      else if (currentPath === '/iletisim') pageLabel = t.nav.contact;
+      else if (currentPath === '/gizlilik') pageLabel = t.footer.privacy;
+      else if (currentPath === '/kvkk') pageLabel = t.footer.kvkk;
+
+      if (pageLabel) {
+        schemaData = {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": lang === 'tr' ? 'Ana Sayfa' : lang === 'de' ? 'Startseite' : 'Home',
+              "item": "https://auradental.studio"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": pageLabel,
+              "item": `https://auradental.studio${currentPath}`
+            }
+          ]
+        };
+      }
+    }
+
+    // Manage script tag
+    const prevScript = document.getElementById('dynamic-jsonld');
+    if (prevScript) {
+      prevScript.remove();
+    }
+
+    if (schemaData) {
+      const script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.id = 'dynamic-jsonld';
+      script.text = JSON.stringify(schemaData);
+      document.head.appendChild(script);
+    }
+
     // Send Google Analytics page_view dynamically in React SPA Router
     if (window.gtag) {
       window.gtag('config', 'G-XXXXXXXXXX', {
@@ -249,6 +474,13 @@ export default function MainLayout({ lang, setLang, t, totalChapters, activeChap
         page_title: title
       });
     }
+
+    return () => {
+      const scriptToClean = document.getElementById('dynamic-jsonld');
+      if (scriptToClean) {
+        scriptToClean.remove();
+      }
+    };
   }, [path.pathname, lang, t]);
 
   return (
