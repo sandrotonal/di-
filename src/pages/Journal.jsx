@@ -2,11 +2,7 @@ import { Link } from 'react-router-dom';
 import { PageHero } from '../components/PageHero';
 import { IMG } from '../data/images';
 import { Icon } from '../components/ui/Icons';
-
-function slugify(text) {
-  const map = { 'ü': 'u', 'ş': 's', 'ı': 'i', 'ö': 'o', 'ç': 'c', 'ğ': 'g' };
-  return text.toLowerCase().replace(/[üşıöçğ]/g, c => map[c]).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-}
+import { slugify } from '../lib/utils';
 
 const journalImages = [
   IMG.treatmentDsd,

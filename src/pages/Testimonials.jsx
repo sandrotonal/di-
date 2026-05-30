@@ -6,7 +6,7 @@ import { ShinyButton } from '../components/ui/shiny-button';
 
 import { IMG } from '../data/images';
 
-export default function TestimonialsPage({ t }) {
+export default function TestimonialsPage({ t, lang }) {
   const navigate = useNavigate();
   const testimonials = (t.testimonials.items || []).map((item, i) => ({
     text: item.q,
@@ -33,8 +33,9 @@ export default function TestimonialsPage({ t }) {
       <PageHero
         tag={t.testimonials.tag}
         title={t.testimonials.title}
-        subtitle="Her biri gerçek, her biri ilham veren dönüşüm hikayeleri."
-        breadcrumb="Hastalar"
+        subtitle={t.testimonials.sub}
+        breadcrumb={t.testimonials.breadcrumb}
+        lang={lang}
       />
 
       {/* ── Animated Columns Section ─────────────────── */}
@@ -49,14 +50,14 @@ export default function TestimonialsPage({ t }) {
           >
             <div className="flex justify-center">
               <div className="border border-gray-300 py-1.5 px-5 rounded-lg text-[11px] tracking-wider uppercase text-gray-700 bg-white/50">
-                {t.testimonials.tag.split(' · ')[1] || 'Hastalar'}
+                {t.testimonials.breadcrumb}
               </div>
             </div>
             <h2 className="text-[clamp(1.5rem,3.5vw,3rem)] font-extralight tracking-[-0.02em] mt-6 text-center">
               {t.testimonials.title}
             </h2>
             <p className="text-center mt-4 text-gray-600 text-[14px] leading-[1.7] max-w-md">
-              Gerçek hastalarımızın gerçek hikayeleri.
+              {t.testimonials.desc}
             </p>
           </motion.div>
         </div>

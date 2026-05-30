@@ -16,7 +16,7 @@ export default function Approach({ t, lang }) {
       <section className="h-[45vh] sm:h-[55vh] overflow-hidden reveal-img relative group">
         <img 
           src={IMG.clinic2} 
-          alt="Klinik" 
+          alt={lang === 'tr' ? 'Klinik' : 'Clinic'} 
           className="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-[2s] ease-[cubic-bezier(0.16,1,0.3,1)] scale-105" 
           loading="lazy" 
         />
@@ -80,7 +80,7 @@ export default function Approach({ t, lang }) {
               <div className="aspect-[4/5] overflow-hidden rounded-sm group cursor-pointer">
                 <img 
                   src={IMG.clinic} 
-                  alt="Yaklaşım" 
+                  alt={lang === 'tr' ? 'Yaklaşım' : lang === 'de' ? 'Ansatz' : 'Approach'} 
                   className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-[1.2s] ease-[cubic-bezier(0.16,1,0.3,1)] scale-105 group-hover:scale-100" 
                   loading="lazy" 
                 />

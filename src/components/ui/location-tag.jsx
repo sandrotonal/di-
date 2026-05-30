@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-export function LocationTag({ city = "İstanbul", country = "Türkiye", timezone = "GMT+3", isLightTheme = false }) {
+export function LocationTag({ city = "İstanbul", country = "Türkiye", lang = "tr", timezone = "GMT+3", isLightTheme = false }) {
   const [isHovered, setIsHovered] = useState(false)
   const [currentTime, setCurrentTime] = useState("")
 
@@ -27,6 +27,19 @@ export function LocationTag({ city = "İstanbul", country = "Türkiye", timezone
   const textClass = isLightTheme ? "text-white" : "text-[#5a6473]";
   const iconClass = isLightTheme ? "text-white/80" : "text-[#5a6473]/70";
 
+  let displayCity = city;
+  let displayCountry = country;
+
+  if (city === "İstanbul" && country === "Türkiye") {
+    if (lang === "en") {
+      displayCity = "Istanbul";
+      displayCountry = "Turkey";
+    } else if (lang === "de") {
+      displayCity = "Istanbul";
+      displayCountry = "Türkei";
+    }
+  }
+
   return (
     <button
       onMouseEnter={() => setIsHovered(true)}
@@ -48,7 +61,7 @@ export function LocationTag({ city = "İstanbul", country = "Türkiye", timezone
             opacity: isHovered ? 0 : 1,
           }}
         >
-          {city}, {country}
+          {displayCity}, {displayCountry}
         </span>
 
         <span

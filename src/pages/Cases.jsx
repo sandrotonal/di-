@@ -53,7 +53,7 @@ export default function Cases({ t, lang }) {
         <div className="grid grid-cols-3 gap-2 p-2">
           {[IMG.patient1, IMG.patient2, IMG.patient3].map((img, i) => (
             <div key={i} className="aspect-[3/4] overflow-hidden img-zoom rounded-sm">
-              <img src={img} alt={`Hasta ${i + 1}`} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-[1.2s]" loading="lazy" />
+              <img src={img} alt={lang === 'tr' ? `Hasta ${i + 1}` : `Patient ${i + 1}`} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-[1.2s]" loading="lazy" />
             </div>
           ))}
         </div>

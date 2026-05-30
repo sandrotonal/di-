@@ -129,7 +129,7 @@ export function Navigation({ t, time, scrolled, lang, setLang }) {
           <div className={`flex items-center gap-4 sm:gap-6 z-50 transition-colors duration-500 ${rightControlsColorClass}`}>
             {/* Location tag with live time */}
             <div className="hidden xl:block">
-              <LocationTag city="İstanbul" country="Türkiye" timezone="GMT+3" isLightTheme={isLightTheme} />
+              <LocationTag lang={lang} timezone="GMT+3" isLightTheme={isLightTheme} />
             </div>
 
             {/* Language selection dropdown */}
@@ -148,7 +148,7 @@ export function Navigation({ t, time, scrolled, lang, setLang }) {
             <button
               onClick={() => setMenuOpen(!menuOpen)}
               className={`lg:hidden flex items-center justify-center w-11 h-11 rounded-full border transition-all duration-500 z-50 shadow-sm ${menuBtnBgClass}`}
-              aria-label="Menü"
+              aria-label={lang === 'tr' ? 'Menü' : 'Menu'}
             >
               {menuOpen ? <Icon.X s={14} /> : <Icon.Menu s={14} />}
             </button>
@@ -210,7 +210,7 @@ export function Navigation({ t, time, scrolled, lang, setLang }) {
             <Icon.Phone s={16} />
             <span>+90 212 123 45 67</span>
           </a>
-          <LocationTag city="İstanbul" country="Türkiye" timezone="GMT+3" />
+          <LocationTag lang={lang} timezone="GMT+3" />
         </div>
       </div>
     </>

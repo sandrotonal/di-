@@ -3,18 +3,7 @@ import { useEffect } from 'react';
 import { IMG } from '../data/images';
 import { PageHero } from '../components/PageHero';
 import { T } from '../data/translations';
-
-function slugify(text) {
-  const map = {
-    'ü': 'u', 'ş': 's', 'ı': 'i', 'ö': 'o', 'ç': 'c', 'ğ': 'g',
-    'Ü': 'u', 'Ş': 's', 'İ': 'i', 'Ö': 'o', 'Ç': 'c', 'Ğ': 'g',
-  };
-  return text
-    .toLowerCase()
-    .replace(/[üşıöçğ]/g, c => map[c] || c)
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');
-}
+import { slugify } from '../lib/utils';
 
 const journalImages = [
   IMG.treatmentDsd,

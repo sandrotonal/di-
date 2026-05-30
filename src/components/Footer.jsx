@@ -36,7 +36,9 @@ export function Footer({ t, time, lang }) {
         <div className="max-w-[1440px] mx-auto px-5 sm:px-8 lg:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12 mb-16">
             <div>
-              <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mb-5">Pages</div>
+              <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mb-5">
+                {lang === 'tr' ? 'Sayfalar' : lang === 'de' ? 'Seiten' : 'Pages'}
+              </div>
               <ul className="space-y-3 text-[13px]">
                 {pagesLinks.map(item => (
                   <li key={item.key}>
@@ -57,7 +59,9 @@ export function Footer({ t, time, lang }) {
               </ul>
             </div>
             <div>
-              <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mb-5">Media</div>
+              <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mb-5 font-medium">
+                {lang === 'tr' ? 'Medya' : lang === 'de' ? 'Medien' : 'Media'}
+              </div>
               <ul className="space-y-3 text-[13px]">
                 {mediaLinks.map(item => (
                   <li key={item.key}>
@@ -65,7 +69,7 @@ export function Footer({ t, time, lang }) {
                   </li>
                 ))}
                 <li>
-                  <Link to="/hastalar" className="link-underline text-white/80 hover:text-[#4a78e0]">{t.testimonials?.tag?.split(' · ')[1] || 'Testimonials'}</Link>
+                  <Link to="/hastalar" className="link-underline text-white/80 hover:text-[#4a78e0]">{t.testimonials?.breadcrumb || 'Testimonials'}</Link>
                 </li>
                 <li>
                   <Link to="/journal" className="link-underline text-white/80 hover:text-[#4a78e0]">{t.nav.journal}</Link>
@@ -73,7 +77,9 @@ export function Footer({ t, time, lang }) {
               </ul>
             </div>
             <div>
-              <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mb-5">Contact</div>
+              <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mb-5 font-medium">
+                {lang === 'tr' ? 'İletişim' : lang === 'de' ? 'Kontakt' : 'Contact'}
+              </div>
               <ul className="space-y-3 text-[13px] text-white/80">
                 <li>{t.location.address1}</li>
                 <li>{t.location.address2}</li>
@@ -81,7 +87,9 @@ export function Footer({ t, time, lang }) {
                 <li><a href="mailto:info@auradental.studio" className="link-underline hover:text-[#4a78e0]">info@auradental.studio</a></li>
               </ul>
               <div className="mt-5 pt-5 border-t border-white/10">
-                <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mb-3">Social</div>
+                <div className="text-[11px] tracking-[0.2em] uppercase text-white/40 mb-3 font-medium">
+                  {lang === 'tr' ? 'Sosyal Medya' : lang === 'de' ? 'Soziale Medien' : 'Social'}
+                </div>
                 <ul className="space-y-2 text-[13px]">
                   {t.footer.social.map(x => (
                     <li key={x}><a href="#" className="link-underline text-white/80 hover:text-[#4a78e0]">{x}</a></li>
@@ -96,7 +104,7 @@ export function Footer({ t, time, lang }) {
             <div className="flex items-center gap-6">
               <Link to="/gizlilik" className="link-underline hover:text-[#4a78e0]">{t.footer.privacy}</Link>
               <Link to="/kvkk" className="link-underline hover:text-[#4a78e0]">{t.footer.kvkk}</Link>
-              <div>İstanbul · {time}</div>
+              <div>{lang === 'tr' ? 'İstanbul' : 'Istanbul'} · {time}</div>
             </div>
           </div>
         </div>

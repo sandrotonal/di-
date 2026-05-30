@@ -24,12 +24,12 @@ export function VirtualTour({ t }) {
           <div className="absolute inset-0 bg-gradient-to-t from-gray-900/50 via-transparent to-transparent"></div>
           <div className="absolute top-6 left-6 text-[10px] tracking-[0.2em] uppercase bg-white/90 backdrop-blur px-3 py-1.5 rounded-full flex items-center gap-2">
             <div className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></div>
-            <span>360° Virtual Tour</span>
+            <span>{t.common.virtualTour}</span>
           </div>
           <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
             <div className="text-white">
               <div className="text-[20px] sm:text-[24px] font-extralight">Aura Dental Studio</div>
-              <div className="text-[11px] tracking-wider opacity-70 mt-1">Nişantaşı · 420m² · 12 Tedavi Odası</div>
+              <div className="text-[11px] tracking-wider opacity-70 mt-1">{t.tour.info}</div>
             </div>
           </div>
         </div>

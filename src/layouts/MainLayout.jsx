@@ -10,6 +10,7 @@ import { useCustomCursor } from '../hooks/useCustomCursor';
 import { useSkewScroll } from '../hooks/useSkewScroll';
 import { useChapterIndicator } from '../hooks/useChapterIndicator';
 import { useTime } from '../hooks/useTime';
+import { slugify } from '../lib/utils';
 
 const seoConfig = {
   tr: {
@@ -188,14 +189,6 @@ export default function MainLayout({ lang, setLang, t, totalChapters, activeChap
     if (currentPath.startsWith('/journal/')) {
       const slug = currentPath.split('/')[2];
       const items = t.journal?.items || [];
-      
-      const slugify = (text) => {
-        const map = {
-          'ü': 'u', 'ş': 's', 'ı': 'i', 'ö': 'o', 'ç': 'c', 'ğ': 'g',
-          'Ü': 'u', 'Ş': 's', 'İ': 'i', 'Ö': 'o', 'Ç': 'c', 'Ğ': 'g',
-        };
-        return text.toLowerCase().replace(/[üşıöçğ]/g, c => map[c] || c).replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-      };
       
       const article = items.find(a => slugify(a.t) === slug);
       if (article) {

@@ -115,7 +115,7 @@ export default function Home({ t, lang }) {
             <div className="lg:col-span-5 reveal">
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-8 h-[1px] bg-gray-400" />
-                <span className="text-[10px] tracking-[0.3em] uppercase text-gray-550 font-medium">{t.team.tag.split(' · ')[1] || 'EKİP'}</span>
+                <span className="text-[10px] tracking-[0.3em] uppercase text-gray-550 font-medium">{t.team.tag.split(' · ')[1] || (lang === 'tr' ? 'EKİP' : 'TEAM')}</span>
               </div>
               
               <h2 className="text-[clamp(2rem,3.5vw,3rem)] font-extralight tracking-[-0.03em] mb-10 text-gray-900">

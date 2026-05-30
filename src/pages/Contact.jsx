@@ -281,7 +281,7 @@ export default function ContactPage({ t, lang }) {
                 <span className="text-gray-500 font-light">{t.location.address2}</span>
               </div>
               <div className="pt-1">
-                <LocationTag city="İstanbul" country="Türkiye" timezone="GMT+3" />
+                <LocationTag lang={lang} timezone="GMT+3" />
               </div>
             </div>
 

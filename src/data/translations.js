@@ -88,6 +88,9 @@ export const T = {
     testimonials: {
       tag: "07 · Hasta Hikayeleri",
       title: "Gerçek dönüşümler.",
+      sub: "Her biri gerçek, her biri ilham veren dönüşüm hikayeleri.",
+      desc: "Gerçek hastalarımızın gerçek hikayeleri.",
+      breadcrumb: "Hastalar",
       items: [
         { name: "Elif Korkmaz", role: "Dijital Gülüş Tasarımı", q: "Aynaya bakmaktan çekiniyordum. Artık her fotoğrafımda gülümsüyorum. Ekip gerçekten hayatımı değiştirdi." },
         { name: "Can Özdemir", role: "All-on-4 İmplant", q: "10 yıl protez kullandım. Artık gerçek dişlerimle yiyebiliyor, konuşabiliyorum. Harika bir deneyim." },
@@ -103,7 +106,14 @@ export const T = {
     tour: {
       tag: "08 · Klinik",
       title: "Kliniğimizi keşfedin.",
-      desc: "Nişantaşı'ndaki modern kliniğimizi sanal tur ile ziyaret etmeden önce keşfedin."
+      desc: "Nişantaşı'ndaki modern kliniğimizi sanal tur ile ziyaret etmeden önce keşfedin.",
+      info: "Nişantaşı · 420m² · 12 Tedavi Odası",
+      items: [
+        { t: 'Steril Ameliyathane', d: 'ISO 13485 standartlarında donanımlı ameliyathane ve sterilizasyon ünitesi.' },
+        { t: 'Dijital Görüntüleme', d: 'Planmeca CBCT 3D tomografi ve dijital röntgen sistemleri ile milimetrik teşhis.' },
+        { t: 'Konforlu Odalar', d: '12 ayrı, ses yalıtımlı tedavi odası. Hastanın rahatı her şeyin önünde.' },
+        { t: 'Merkezi Konum', d: 'Nişantaşı, Şişli. Metro ve toplu taşıma araçlarıyla kolayca ulaşılabilir.' }
+      ]
     },
     journal: {
       tag: "09 · Journal",
@@ -285,6 +295,9 @@ export const T = {
     testimonials: {
       tag: "07 · Patient Stories",
       title: "Real transformations.",
+      sub: "Each one real, each one an inspiring transformation story.",
+      desc: "Real stories from our real patients.",
+      breadcrumb: "Patients",
       items: [
         { name: "Elif Korkmaz", role: "Digital Smile Design", q: "I was hesitant to look in the mirror. Now I smile in every single photo. The team truly changed my life." },
         { name: "Can Özdemir", role: "All-on-4 Implants", q: "After 10 years with dentures, I can eat and speak with real teeth. An amazing experience." },
@@ -300,7 +313,14 @@ export const T = {
     tour: {
       tag: "08 · Clinic",
       title: "Explore our clinic.",
-      desc: "Explore our modern clinic in Nişantaşı with a virtual tour before visiting."
+      desc: "Explore our modern clinic in Nişantaşı with a virtual tour before visiting.",
+      info: "Nişantaşı · 420m² · 12 Treatment Rooms",
+      items: [
+        { t: 'Sterile Operating Room', d: 'Fully equipped operating room and sterilization unit meeting ISO 13485 standards.' },
+        { t: 'Digital Imaging', d: 'Millimetric diagnosis with Planmeca CBCT 3D tomography and digital x-ray systems.' },
+        { t: 'Comfortable Rooms', d: '12 separate, soundproofed treatment rooms. Patient comfort is our top priority.' },
+        { t: 'Central Location', d: 'Nişantaşı, Şişli. Easily accessible by metro and public transport.' }
+      ]
     },
     journal: {
       tag: "09 · Journal",
@@ -482,6 +502,9 @@ export const T = {
     testimonials: {
       tag: "07 · Patientengeschichten",
       title: "Echte Transformationen.",
+      sub: "Jede einzelne echt, jede einzelne eine inspirierende Transformationsgeschichte.",
+      desc: "Echte Geschichten von unseren echten Patienten.",
+      breadcrumb: "Patienten",
       items: [
         { name: "Elif Korkmaz", role: "Digitales Smile Design", q: "Ich hatte Angst, in den Spiegel zu schauen. Jetzt lächle ich auf jedem Foto. Das team hat mein Leben verändert." },
         { name: "Can Özdemir", role: "All-on-4 Implantate", q: "Nach 10 Jahren mit Prothesen kann ich wieder normal essen und sprechen. Eine tolle Erfahrung." },
@@ -497,7 +520,14 @@ export const T = {
     tour: {
       tag: "08 · Klinik",
       title: "Erkunden Sie unsere Klinik.",
-      desc: "Moderne Klinik in Nişantaşı mit virtuellem 360-Grad-Rundgang."
+      desc: "Moderne Klinik in Nişantaşı mit virtuellem 360-Grad-Rundgang.",
+      info: "Nişantaşı · 420m² · 12 Behandlungsräume",
+      items: [
+        { t: 'Steriler Operationssaal', d: 'Voll ausgestatteter OP-Saal und Sterilisationseinheit nach ISO 13485 Standards.' },
+        { t: 'Digitale Bildgebung', d: 'Präzise Diagnostik mit Planmeca CBCT 3D-Tomographie und digitalen Röntgensystemen.' },
+        { t: 'Komfortable Zimmer', d: '12 separate, schallisolierte Behandlungsräume. Der Komfort des Patienten steht an erster Stelle.' },
+        { t: 'Zentrale Lage', d: 'Nişantaşı, Şişli. Leicht erreichbar mit U-Bahn und öffentlichen Verkehrsmitteln.' }
+      ]
     },
     journal: {
       tag: "09 · Journal",
