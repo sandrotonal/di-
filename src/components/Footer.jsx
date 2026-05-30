@@ -105,6 +105,9 @@ export function Footer({ t, time, lang }) {
               <Link to="/gizlilik" className="link-underline hover:text-[#4a78e0]">{t.footer.privacy}</Link>
               <Link to="/kvkk" className="link-underline hover:text-[#4a78e0]">{t.footer.kvkk}</Link>
               <div>{lang === 'tr' ? 'İstanbul' : 'Istanbul'} · {time}</div>
+              <a href="https://gucluyumhe.dev/" target="_blank" rel="noopener noreferrer" className="link-underline hover:text-[#4a78e0]">
+                {lang === 'tr' ? 'Site by' : lang === 'de' ? 'Seite von' : 'Site by'} GüçlüyümHe
+              </a>
             </div>
           </div>
         </div>
